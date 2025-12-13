@@ -55,6 +55,15 @@ class TestBooksCollector:
     def test_get_books_genre_success(self, collector):
 
         assert collector.get_books_genre() == {}
+
+    def test_get_books_genre_exist_books_returns_non_empty_dict(self, collector):
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.add_new_book('Девушка с татуировкой дракона')
+        collector.set_book_genre('Девушка с татуировкой дракона', 'Детективы')
+
+        result = collector.get_books_genre()
+        
+        assert result == {'Гордость и предубеждение и зомби': '', 'Девушка с татуировкой дракона': 'Детективы'}
     
     def test_get_books_for_children_child_books_received(self, collector):
         collector.add_new_book('Взрослая книга')
