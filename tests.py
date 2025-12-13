@@ -104,3 +104,13 @@ class TestBooksCollector:
     def test_get_list_of_favorites_books_success(self, collector):
 
         assert collector.get_list_of_favorites_books() == []
+
+    def test_get_list_of_favorites_books_exists_book_list_of_favorites_books_received(self, collector):
+        collector.add_new_book('Тестовая книга 1')
+        collector.add_new_book('Тестовая книга 2')
+        collector.add_book_in_favorites('Тестовая книга 1')
+        collector.add_book_in_favorites('Тестовая книга 2')
+
+        result = collector.get_list_of_favorites_books()
+
+        assert result == ['Тестовая книга 1', 'Тестовая книга 2']
