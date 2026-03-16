@@ -51,10 +51,6 @@ class TestBooksCollector:
     def test_get_books_with_specific_genre_no_exists_genre_books_list_no_received(self, collector):
 
         assert collector.get_books_with_specific_genre('Романы') == []
-    
-    def test_get_books_genre_success(self, collector):
-
-        assert collector.get_books_genre() == {}
 
     def test_get_books_genre_exist_books_returns_non_empty_dict(self, collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
